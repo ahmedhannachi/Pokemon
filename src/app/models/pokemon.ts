@@ -4,6 +4,7 @@ export class Pokemon {
     cp: number;
     name: string;
     picture: string;
+    color: string;
     types: Array<string>;
     created: Date;
 }

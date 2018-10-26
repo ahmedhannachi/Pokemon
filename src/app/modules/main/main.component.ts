@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import {Pokemon} from "../../models/pokemon";
-import {POKEMONS} from "../../demo/mock-pokemons";
+import {POKEMONS} from "../../demo-data/mock-pokemons";
 
 @Component({
     selector: 'main-component',
@@ -9,7 +9,8 @@ import {POKEMONS} from "../../demo/mock-pokemons";
 })
 export class MainComponent implements OnInit {
 
-    pokemons: Pokemon[] = null;
+    private title:string = "List of pokemons";
+    private pokemons: Pokemon[] = null;
 
     ngOnInit() {
         this.pokemons = POKEMONS;
@@ -18,5 +19,4 @@ export class MainComponent implements OnInit {
     selectPokemon(pokemon: Pokemon) {
         console.log('Vous avez selectionné ' + pokemon.name);
     }
-
 }

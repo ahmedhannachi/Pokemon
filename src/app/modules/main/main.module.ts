@@ -1,14 +1,14 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { MainComponent }  from './main.component';
+import { ListComponent }  from './components/list/list.component';
 
 import {BorderCardDirective} from "./directives/border-card.directive";
-import { PokemonTypeColorPipe} from "./pipes/pokemon-type-color.pipe";
+import {PokemonTypeColorPipe} from "./pipes/pokemon-type-color.pipe";
 
 @NgModule({
     imports:      [ BrowserModule ],
-    declarations: [ MainComponent,BorderCardDirective,PokemonTypeColorPipe ],
-    bootstrap:    [ MainComponent ]
+    declarations: [ ListComponent,BorderCardDirective,PokemonTypeColorPipe ],
+    bootstrap:    [ ListComponent ]
 })
 export class MainModule { }

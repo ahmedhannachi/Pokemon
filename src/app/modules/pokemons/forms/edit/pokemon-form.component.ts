@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {PokemonsService} from "../../pokemons.service";
 import {Pokemon} from "../../../../models/pokemon";
 
 @Component({
     selector: 'pokemon-form',
-    templateUrl: './app/pokemons/pokemon-form.component.html'
+    templateUrl: 'app/modules/pokemons/forms/edit/pokemon-form.component.html',
+    styleUrls: ['app/modules/pokemons/forms/edit/pokemon-form.component.css']
 })
 export class PokemonFormComponent implements OnInit {
 
@@ -14,7 +15,8 @@ export class PokemonFormComponent implements OnInit {
 
     constructor(
         private pokemonsService: PokemonsService,
-        private router: Router) { }
+        private router: Router) {
+    }
 
     ngOnInit() {
         // Initialisation de la propriété types
@@ -31,7 +33,7 @@ export class PokemonFormComponent implements OnInit {
     // Méthode appelée lorsque l'utilisateur ajoute ou retire un type au pokémon en cours d'édition.
     selectType($event: any, type: string): void {
         let checked = $event.target.checked;
-        if ( checked ) {
+        if (checked) {
             this.pokemon.types.push(type);
         } else {
             let index = this.pokemon.types.indexOf(type);
@@ -41,10 +43,15 @@ export class PokemonFormComponent implements OnInit {
         }
     }
 
+    isTypesValid(type: string): boolean {
+        return !(this.pokemon.types.length >= 3 && !this.hasType(type));
+
+    }
+
     // La méthode appelée lorsque le formulaire est soumis.
     onSubmit(): void {
         console.log("Submit form !");
-        let link = ['/pokemon', this.pokemon.id];
+        let link = ['/pokemons', this.pokemon.id];
         this.router.navigate(link);
     }
 

@@ -5,9 +5,9 @@ import {POKEMONS} from "../../../../demo-data/mock-pokemons";
 
 @Component({
     selector: 'detail-pokemon',
-    templateUrl: 'app/modules/main/components/details/details-pokemon.component.html',
+    templateUrl: 'app/modules/pokemons/components/details/pokemons-detail.component.html',
 })
-export class DetailsPokemonComponent implements OnInit {
+export class PokemonsDetailComponent implements OnInit {
 
     pokemons: Pokemon[] = null;
     pokemon: Pokemon = null;

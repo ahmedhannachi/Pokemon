@@ -8,7 +8,8 @@ import {PokemonsRoutingModule} from "./pokemons-routing.module";
 import {PokemonsListComponent} from './components/list/pokemons-list.component';
 import {PokemonsDetailComponent} from "./components/details/pokemons-detail.component";
 import {EditPokemonComponent} from "./components/edit/pokemon-edit.component";
-import {PokemonFormComponent} from "./forms/edit/pokemon-form.component";
+import {PokemonFormComponent} from "./forms/pokemon/pokemon-form.component";
+import {LoaderComponent} from "../app/components/loader.component";
 // DIRECTIVES
 import {BorderCardDirective} from "./directives/border-card.directive";
 // PIPES
@@ -28,7 +29,8 @@ import {PokemonsService} from "./pokemons.service";
         EditPokemonComponent,
         PokemonFormComponent,
         BorderCardDirective,
-        PokemonTypeColorPipe
+        PokemonTypeColorPipe,
+        LoaderComponent
     ],
     providers: [
         PokemonsService

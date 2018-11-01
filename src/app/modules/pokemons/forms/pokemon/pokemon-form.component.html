@@ -66,6 +66,7 @@
                 <!-- Submit button -->
                 <div class="divider"></div>
                 <div class="section center">
+                    <a href="javascript:;" class="waves-effect waves-light btn" (click)="goBack()">Retour</a>
                     <button type="submit"
                             class="waves-effect waves-light btn"
                             [disabled]="!pokemonForm.form.valid">
@@ -77,4 +78,6 @@
         </div>
     </div>
 </form>
-<h3 *ngIf="!pokemon" class="center">Aucun pokémon à éditer...</h3>
+<h4 *ngIf='!pokemon' class="center">
+    <pkmn-loader></pkmn-loader>
+</h4>

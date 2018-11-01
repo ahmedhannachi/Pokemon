@@ -5,8 +5,8 @@ import {Pokemon} from "../../../../models/pokemon";
 
 @Component({
     selector: 'pokemon-form',
-    templateUrl: 'app/modules/pokemons/forms/edit/pokemon-form.component.html',
-    styleUrls: ['app/modules/pokemons/forms/edit/pokemon-form.component.css']
+    templateUrl: 'app/modules/pokemons/forms/pokemon/pokemon-form.component.html',
+    styleUrls: ['app/modules/pokemons/forms/pokemon/pokemon-form.component.css']
 })
 export class PokemonFormComponent implements OnInit {
 
@@ -57,7 +57,7 @@ export class PokemonFormComponent implements OnInit {
     }
 
     goBack(): void{
-        this.router.navigate(['/pokemon', this.pokemon.id]);
+        this.router.navigate(['/pokemons', this.pokemon.id]);
     }
 
 }

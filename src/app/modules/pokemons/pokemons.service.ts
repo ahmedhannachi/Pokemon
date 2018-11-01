@@ -1,9 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {catchError, map, tap} from "rxjs/operators";
+import {catchError, tap} from "rxjs/operators";
 import {Pokemon} from "../../models/pokemon";
-import {POKEMONS} from "../../demo-data/mock-pokemons";
 import {of} from "rxjs/observable/of";
 
 @Injectable()
@@ -44,23 +43,30 @@ export class PokemonsService {
 
     updatePokemon(pokemon: Pokemon): Observable<Pokemon> {
         const httpOptions = {
-          headers: new HttpHeaders({'Content-Type': 'application/json'})
+            headers: new HttpHeaders({'Content-Type': 'application/json'})
         };
 
         return this.http.put(this.pokemonsApiUrl, pokemon, httpOptions).pipe(
-            tap(_=>this.log(`updated pokemon id=${pokemon.id}`)),
+            tap(_ => this.log(`updated pokemon id=${pokemon.id}`)),
             catchError(this.handleError<any>('updatePokemon'))
         );
     }
 
-    deletePokemon(pokemon: Pokemon){
+    deletePokemon(pokemon: Pokemon) {
         const httpOptions = {
             headers: new HttpHeaders({'Content-Type': 'application/json'})
         };
 
-        return this.http.delete(this.pokemonsApiUrl+"/"+pokemon.id, httpOptions).pipe(
-            tap(_=>this.log(`delete pokemon id=${pokemon.id}`)),
+        return this.http.delete(this.pokemonsApiUrl + "/" + pokemon.id, httpOptions).pipe(
+            tap(_ => this.log(`delete pokemon id=${pokemon.id}`)),
             catchError(this.handleError<any>('deletePokemon'))
+        );
+    }
+
+    searchPokemons(term: string): Observable<Pokemon[]> {
+        return this.http.get<Pokemon[]>(`${this.pokemonsApiUrl}/?name=${term}`).pipe(
+            tap(() =>this.log(`found pokemons matching "${term}"`)),
+            catchError(this.handleError<Pokemon[]>('searchPokemons', []))
         );
     }
 

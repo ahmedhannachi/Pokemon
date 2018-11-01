@@ -13,11 +13,11 @@ export class EditPokemonComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private pokemonsService: PokemonsService) {}
+        private PokemonsService: PokemonsService) {}
 
     ngOnInit(): void {
         let id = +this.route.snapshot.params['id'];
-        this.pokemon = this.pokemonsService.getPokemon(id);
+        this.PokemonsService.getPokemon(id).subscribe(pokemon=>this.pokemon=pokemon);
     }
 
 }

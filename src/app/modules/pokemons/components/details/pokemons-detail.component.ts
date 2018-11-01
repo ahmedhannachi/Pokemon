@@ -11,12 +11,12 @@ export class PokemonsDetailComponent implements OnInit {
 
     pokemon: Pokemon = null;
 
-    constructor(private route: ActivatedRoute, private router: Router, private PokemonService: PokemonsService) {
+    constructor(private route: ActivatedRoute, private router: Router, private PokemonsService: PokemonsService) {
     }
 
     ngOnInit(): void {
         let id = +this.route.snapshot.paramMap.get('id');
-        this.pokemon = this.PokemonService.getPokemon(id);
+        this.PokemonsService.getPokemon(id).subscribe(pokemon=>this.pokemon=pokemon);
     }
 
     goBack(): void {
@@ -25,6 +25,10 @@ export class PokemonsDetailComponent implements OnInit {
 
     goEdit(id: number): void {
         this.router.navigate(['/pokemons/edit', id]);
+    }
+
+    delete(pokemon: Pokemon): void {
+        this.PokemonsService.deletePokemon(pokemon).subscribe(()=>this.goBack());
     }
 
 }
